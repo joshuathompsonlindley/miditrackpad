@@ -21,10 +21,10 @@ jobs:
         run: python -m pip install .[dev]
 
       - name: Ruff check
-        run: ruff check .
+        run: ruff check ./miditrackpad
 
       - name: isort check
-        run: isort --check .
+        run: isort --check ./miditrackpad
 
       - name: mypy check
-        run: mypy .
+        run: mypy ./miditrackpad
