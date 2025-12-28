@@ -39,7 +39,7 @@ class MidiManager:
         # The amount of pressure that corresponds to max MIDI value (127)
         max_pressure: float = 1700.0
         # Deadzone to avoid noise at low pressure levels
-        deadzone: float = 50.0
+        deadzone: float = 250.0
 
         # No point calculating if below deadzone
         if pressure <= deadzone:
