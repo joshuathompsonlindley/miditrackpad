@@ -30,11 +30,11 @@ class MidiManager:
             while self.started:
                 value_to_send: int = self.clamp_to_midi_range(pm.pressure())
                 self.output.send(mido.Message("control_change", control=self.cc, value=value_to_send))
-                logging.info(f"Sent MIDI CC {self.cc} with value {value_to_send}")
+                logging.info(f"Sent MIDI CC {self.cc} {value_to_send}")
                 time.sleep(1.0 / 60.0)
 
     def clamp_to_midi_range(self, pressure: float) -> int:
-        """Map raw pressure (0..~30000) to MIDI 0-127 with a fixed deadzone."""
+        """Map raw pressure (0..~1700) to MIDI 0-127 with a fixed deadzone."""
 
         # The amount of pressure that corresponds to max MIDI value (127)
         max_pressure: float = 1700.0
