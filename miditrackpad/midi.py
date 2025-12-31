@@ -19,6 +19,9 @@ class MidiManager:
 
         self.started: bool = False
 
+    def __enter__(self) -> "MidiManager":
+        return self
+
     def start(self) -> None:
         """Start the pressure manager and begin sending MIDI messages."""
         self.started = True
@@ -52,7 +55,7 @@ class MidiManager:
         scaled: int = int(normalized * 127)
         return max(0, min(127, scaled))
 
-    def stop(self) -> None:
+    def __exit__(self, exc_type: type | None, exc: BaseException | None, tb: object | None) -> None:
         """Stop sending MIDI messages."""
         self.started = False
         self.output.close()

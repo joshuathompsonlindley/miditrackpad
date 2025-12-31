@@ -16,15 +16,8 @@ logging.basicConfig(level=logging.INFO, format="[%(asctime)s][%(levelname)s]: %(
     help="MIDI Control Change number to send pressure data on (default: 1)",
 )
 def main(port: str, cc: int = 1) -> None:
-    midi_manager: MidiManager = MidiManager(port, cc)
-
-    try:
+    with MidiManager(port, cc) as midi_manager:
         midi_manager.start()
-    except Exception:
-        logging.info("Stopping MIDI manager.")
-    finally:
-        midi_manager.stop()
-
 
 if __name__ == "__main__":
     main()
