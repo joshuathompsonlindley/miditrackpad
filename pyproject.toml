@@ -22,7 +22,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-	"ruff==0.14.11",
+	"ruff==0.15.1",
 	"mypy==1.19.1",
 	"isort==7.0.0",
 	"build==1.4.0",
